@@ -16,7 +16,7 @@
 
     </head>
     <body>
-        <header>
+        <header class="with-background">
             <div class="top-nav container">
                 <div class="logo">Laravel E-commerce</div>
                 <ul>
@@ -24,7 +24,7 @@
                     <li><a href="">Loja</a></li>
                     <li><a href="">Sobre</a></li>
                     <li><a href="">Blog</a></li>
-                    <li><a href="">Carrinho</a></li>
+                    <li><a href="">Carrinho <span class="cart-count"><span>3</span></span></a></li>
                 </ul>
             </div> <!-- Fim do top-nav -->
 
@@ -126,17 +126,7 @@
             </div> <!-- fim do container -->
         </div> <!-- fim do blog-section -->
 
-        <footer>
-            <div class="footer-content container">
-                <div class="made-with">Feito por <i class="fas fa-heart"> por Deyvson Aguiar</i></div>
-                <ul>
-                    <li>Sigam-me:</li>
-                    <li><a href=""><i class="fas fa-globe"></i></a></li>
-                    <li><a href=""><i class="fab fa-youtube"></i></a></li>
-                    <li><a href=""><i class="fab fa-github"></i></a></li>
-                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                </ul>
-            </div> <!-- fim do footer-content -->
-        </footer>
+        @include('partials.footer')
+
     </body>
 </html>

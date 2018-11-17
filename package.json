@@ -17,7 +17,11 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
-        "vue": "^2.5.7",
-        "reset-css": "^4.0.1"
+        "reset-css": "^4.0.1",
+        "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "browser-sync": "^2.26.3",
+        "browser-sync-webpack-plugin": "^2.0.1"
     }
 }
