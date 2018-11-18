@@ -21,7 +21,7 @@
                 <div class="logo">Laravel E-commerce</div>
                 <ul>
                     <li>
-                    <li><a href="">Loja</a></li>
+                    <li><a href="{{ route('shop.index') }}">Loja</a></li>
                     <li><a href="">Sobre</a></li>
                     <li><a href="">Blog</a></li>
                     <li><a href="">Carrinho <span class="cart-count"><span>3</span></span></a></li>
@@ -53,51 +53,23 @@
                     <a href="" class="button">À Venda</a>
                 </div>
 
-                 <div class="products text-center">
+                <div class="products text-center">
+                @foreach($products as $product)
                     <div class="product">
-                        <a href=""><img src="img/macbook-small.jpeg" alt="product"></a>
-                        <a href=""><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">R$8499,99</div>
+                        <a href="{{ route('shop.show', $product->slug) }}">
+                            <img src="{{ asset('img/products/'.$product->slug.'.png') }}" alt="product">
+                        </a>
+                        <a href="{{ route('shop.show', $product->slug) }}">
+                            <div class="product-name">{{ $product->name }}</div>
+                        </a>
+                        <div class="product-price">R$ {{ $product->presentPrice() }}</div>
                     </div>
-                    <div class="product">
-                        <a href=""><img src="img/macbook-small.jpeg" alt="product"></a>
-                        <a href=""><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">R$8499,99</div>
-                    </div>
-                    <div class="product">
-                        <a href=""><img src="img/macbook-small.jpeg" alt="product"></a>
-                        <a href=""><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">R$8499,99</div>
-                    </div>
-                    <div class="product">
-                        <a href=""><img src="img/macbook-small.jpeg" alt="product"></a>
-                        <a href=""><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">R$8499,99</div>
-                    </div>
-                    <div class="product">
-                        <a href=""><img src="img/macbook-small.jpeg" alt="product"></a>
-                        <a href=""><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">R$8499,99</div>
-                    </div>
-                    <div class="product">
-                        <a href=""><img src="img/macbook-small.jpeg" alt="product"></a>
-                        <a href=""><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">R$8499,99</div>
-                    </div>
-                    <div class="product">
-                        <a href=""><img src="img/macbook-small.jpeg" alt="product"></a>
-                        <a href=""><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">R$8499,99</div>
-                    </div>
-                    <div class="product">
-                        <a href=""><img src="img/macbook-small.jpeg" alt="product"></a>
-                        <a href=""><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">R$8499,99</div>
-                    </div>
+                @endforeach
+
                 </div><!-- Fim de Produtos -->
 
                 <div class="text-center button-container">
-                    <a href="" class="button">Visualizar mais produtos</a>
+                    <a href="{{ route('shop.index') }}" class="button">Visualizar todos os produtos</a>
                 </div>
             </div> <!-- Fim de container -->
         </div> <!-- Fim de Featured -->

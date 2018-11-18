@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Product')
+@section('title', $product->name)
 
 @section('extra-css')
 
@@ -10,22 +10,25 @@
 
     <div class="breadcrumbs">
         <div class="container">
-            <a href="#">Home</a>
+            <a href="/">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <span>Shop</span>
+            <span><a href="{{ route('shop.index') }}">Shop</a></span>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
             <span>Macbook Pro</span>
         </div>
     </div> <!-- end breadcrumbs -->
 
     <div class="products-section container">
-        <div class="product-section-image">
-            <img src="{{ asset('img/macbook-post.png') }}" alt="product">
+        <div>
+            <div class="product-section-image">
+                <img src="{{ asset('img/macbook-post.png') }}" alt="product">
+            </div>
         </div>
+
         <div class="product-section-information">
-            <h1 class="product-section-title">MacBook Pro</h1>
-            <div class="product-section-subtitle">15 inch, 1TB SSD, 32GB RAM</div>
-            <div class="product-section-price">$2499.99</div>
+            <h1 class="product-section-title">{{ $product->name }}</h1>
+            <div class="product-section-subtitle">{{ $product->details }}</div>
+            <div class="product-section-price">R$ {{ $product->presentPrice() }}</div>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae facere facilis praesentium eaque et eum, illo repudiandae quia adipisci, soluta voluptatum. Reprehenderit inventore, sed a voluptatibus enim optio cum repellat?
             </p>
