@@ -1,27 +1,14 @@
 <div class="might-like-section">
     <div class="container">
-        <h2>You might also like...</h2>
+        <h2>Você também poderá gostar de...</h2>
         <div class="might-like-grid">
-            <a href="#" class="might-like-product">
-                <img src="{{ asset('img/macbook-post.png') }}" alt="product">
-                <div class="might-like-product-name">MacBook Pro</div>
-                <div class="might-like-product-price">$2499.99</div>
-            </a>
-            <a href="#" class="might-like-product">
-                <img src="{{ asset('img/macbook-post.png') }}" alt="product">
-                <div class="might-like-product-name">MacBook Pro</div>
-                <div class="might-like-product-price">$2499.99</div>
-            </a>
-            <a href="#" class="might-like-product">
-                <img src="{{ asset('img/macbook-post.png') }}" alt="product">
-                <div class="might-like-product-name">MacBook Pro</div>
-                <div class="might-like-product-price">$2499.99</div>
-            </a>
-            <a href="#" class="might-like-product">
-                <img src="{{ asset('img/macbook-post.png') }}" alt="product">
-                <div class="might-like-product-name">MacBook Pro</div>
-                <div class="might-like-product-price">$2499.99</div>
-            </a>
+            @foreach($mightAlsoLike as $product)
+                <a href="#" class="might-like-product">
+                    <img src="{{ asset('img/products/'.$product->slug.'.png') }}" alt="product">
+                    <div class="might-like-product-name">{{ $product->name }}</div>
+                    <div class="might-like-product-price">R$ {{ $product->presentPrice() }}</div>
+                </a>
+            @endforeach
         </div>
     </div>
 </div>

@@ -106,6 +106,8 @@
         background: $light-gray-background;
 
         .cart-totals-left {
+            display: flex;
+            justify-content: space-between;
             width: 50%;
         }
 

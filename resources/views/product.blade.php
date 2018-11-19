@@ -34,8 +34,13 @@
             </p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas magni accusantium, sapiente dicta iusto ut dignissimos atque placeat tempora iste.</p>
             <p>&nbsp;</p>
-
-            <a href="#" class="button">Add to Cart</a>
+            <form action="{{ route('cart.store') }}" method="post">
+                {{csrf_field()}}
+                <input type="hidden" name="id" value="{{ $product->id }}">
+                <input type="hidden" name="name" value="{{ $product->name }}">
+                <input type="hidden" name="price" value="{{ $product->price }}">
+                <button type="submit" class="button button-plain">Adicionar ao Carrinho</button>
+            </form>
         </div>
     </div> <!-- end products -->
 
