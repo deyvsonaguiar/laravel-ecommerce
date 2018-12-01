@@ -132,9 +132,9 @@
                     </div>
 
                     <div class="checkout-totals-right">
-                        R$ {{ Cart::subtotal() }}<br>
-                        R$ {{ Cart::tax() }}<br>
-                        <span class="cart-totals-total">R$ {{ Cart::total() }}</span>
+                        R$ {{ presentPrice(Cart::subtotal()) }}<br>
+                        R$ {{ presentPrice(Cart::tax()) }}<br>
+                        <span class="cart-totals-total">R$ {{ presentPrice(Cart::total()) }}</span>
                     </div>
                 </div> <!-- end checkout-totals -->
 
