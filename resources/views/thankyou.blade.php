@@ -12,8 +12,8 @@
 
     <div class="container">
         <div class="thank-you-section">
-            <h1>Thank you for <br> Your Order!</h1>
-            <p>A confirmation email was sent</p>
+            <h1>Obrigado pela sua <br>compra!</h1>
+            <p>Uma confirmação foi enviada para o seu e-mail.</p>
             <div class="spacer"></div>
             <div>
                 <a href="{{ url('/') }}" class="button">Home Page</a>

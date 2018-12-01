@@ -106,9 +106,9 @@
                         <span class="cart-totals-total">Total </span><br>
                     </div>
                     <div class="cart-totals-subtotal">
-                        R$ {{ Cart::subtotal() }}<br>
-                        R$ {{ Cart::tax() }}<br>
-                        <span class="cart-totals-total">R$ {{ Cart::total() }}</span>
+                        R$ {{ presentPrice(Cart::subtotal()) }}<br>
+                        R$ {{ presentPrice(Cart::tax()) }}<br>
+                        <span class="cart-totals-total">R$ {{ presentPrice(Cart::total()) }}</span>
                     </div>
                 </div>
             </div> <!-- end cart-totals -->
