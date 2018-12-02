@@ -31,76 +31,73 @@
         <h1 class="checkout-heading stylish-heading">Checkout</h1>
         <div class="checkout-section">
             <div>
-                <form action="{{ route('checkout.store') }}" id="payment-form" method="post">
-                    {{csrf_field()}}
 
-                    <h2>Billing Details</h2>
+                    <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
+                        {{ csrf_field() }}
+                        <h2>Detalhes de Pagamento</h2>
 
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="name_on_card">Name</label>
-                        <input type="text" class="form-control" id="name" name="name_on_card" value="{{ old('name') }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
-                    </div>
-
-                    <div class="half-form">
                         <div class="form-group">
-                            <label for="city">City</label>
-                            <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
+                            <label for="email">E-mail</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="province">Province</label>
-                            <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}" required>
-                        </div>
-                    </div> <!-- end half-form -->
-
-                    <div class="half-form">
-                        <div class="form-group">
-                            <label for="postalcode">Postal Code</label>
-                            <input type="text" class="form-control" id="postalcode" name="postalcode" value="{{ old('postalcode') }}" required>
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone" value="" required>
-                        </div>
-                    </div> <!-- end half-form -->
-
-                    <div class="spacer"></div>
-
-                    <h2>Payment Details</h2>
-
-                    <div class="form-group">
-                        <label for="name">Name on Card</label>
-                        <input type="text" class="form-control" id="name" name="name_on_card" value="">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="card-element">
-                            Credit or debit card
-                        </label>
-                        <div id="card-element">
-                            <!-- A Stripe Element will be inserted here. -->
+                            <label for="address">Endereço</label>
+                            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
                         </div>
 
-                        <!-- Used to display form errors. -->
-                        <div id="card-errors" role="alert"></div>
-                    </div>
+                        <div class="half-form">
+                            <div class="form-group">
+                                <label for="city">Cidade</label>
+                                <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="province">Estado</label>
+                                <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}" required>
+                            </div>
+                        </div> <!-- end half-form -->
 
-                    <div class="spacer"></div>
+                        <div class="half-form">
+                            <div class="form-group">
+                                <label for="postalcode">CEP</label>
+                                <input type="text" class="form-control" id="postalcode" name="postalcode" value="{{ old('postalcode') }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone/Celular</label>
+                                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+                            </div>
+                        </div> <!-- end half-form -->
 
-                    <button type="submit" id="complete-order" class="button-primary full-width">Complete Order</button>
+                        <div class="spacer"></div>
 
-                </form>
+                        <h2>Detalhes do Pagamento</h2>
+
+                        <div class="form-group">
+                            <label for="name_on_card">Nome do Cartão</label>
+                            <input type="text" class="form-control" id="name_on_card" name="name_on_card" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="card-element">
+                                Cartão de Crédito ou Débito
+                            </label>
+                            <div id="card-element">
+                                <!-- a Stripe Element will be inserted here. -->
+                            </div>
+
+                            <!-- Used to display form errors -->
+                            <div id="card-errors" role="alert"></div>
+                        </div>
+                        <div class="spacer"></div>
+                        <button type="submit" id="complete-order" class="button-primary full-width">Completar Pedido</button>
+                    </form>
             </div>
 
             <div class="checkout-table-container">
-                <h2>Your Order</h2>
+                <h2>Seu Pedido</h2>
 
                 <div class="checkout-table">
                     @foreach(Cart::content() as $item)

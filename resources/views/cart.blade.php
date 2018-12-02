@@ -68,15 +68,20 @@
 
                         </div>
                         <div>
-                            <select class="quantity">
-                                <option selected="">1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="quantity" data-id="{{ $item->rowId }}">
+                                @for($i = 1; $i < 5 + 1; $i++)
+                                <option {{ $item->qty == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                @endfor
+                                {{--
+                                <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
+                                <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
+                                <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
+                                <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
+                                <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
+                                --}}
                             </select>
                         </div>
-                        <div>R$ {{ $item->model->presentPrice() }}</div>
+                        <div>R$ {{ presentPrice($item->subtotal()) }}</div>
                     </div>
 
                 </div> <!-- end cart-table-row -->
@@ -85,12 +90,12 @@
 
             </div> <!-- end cart-table -->
 
-            <a href="#" class="have-code">Have a Code?</a>
+            <a href="#" class="have-code">Tem um código?</a>
 
             <div class="have-code-container">
                 <form action="#">
                     <input type="text">
-                    <button type="submit" class="button button-plain">Apply</button>
+                    <button type="submit" class="button button-plain">Aplicar</button>
                 </form>
             </div>
 
@@ -184,4 +189,30 @@
     @include('partials.might-like')
 
     </div>
+@endsection
+
+@section('extra-js')
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        (function () {
+            const classname = document.querySelectorAll('.quantity')
+
+            Array.from(classname).forEach(function(element) {
+                element.addEventListener('change', function() {
+                    const id = element.getAttribute('data-id')
+                    axios.patch(`/cart/${id}`, {
+                        quantity: this.value
+                    })
+                        .then(function (response) {
+                            // console.log(response);
+                            window.location.href = '{{ route('cart.index') }}'
+                        })
+                        .catch(function (error) {
+                            // console.log(error);
+                            window.location.href = '{{ route('cart.index') }}'
+                        });
+                })
+            })
+        })();
+    </script>
 @endsection
